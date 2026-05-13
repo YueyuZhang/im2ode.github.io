@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>参数配置指南 | %s - IM2ODE 逆向材料设计软件包</title>
+    <meta name="description" content="IM2ODE是基于多目标差分演化算法的逆向材料设计软件包，支持3D晶体、2D层状、1D纳米带、0D团簇结构预测，可用于半导体带隙、超硬材料等功能材料的逆向设计">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/im2ode.github.io/assets/style.B04r7Y6q.css" as="style">
+    <link rel="preload stylesheet" href="/im2ode.github.io/vp-icons.css" as="style">
+    
+    <script type="module" src="/im2ode.github.io/assets/app.CWB4fwpI.js"></script>
+    <link rel="preload" href="/im2ode.github.io/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/im2ode.github.io/assets/chunks/theme.COarT_MP.js">
+    <link rel="modulepreload" href="/im2ode.github.io/assets/chunks/framework.D_vkKrCz.js">
+    <link rel="modulepreload" href="/im2ode.github.io/assets/guide_configuration.md.BqvvTMT9.lean.js">
+    <meta name="keywords" content="IM2ODE,逆向材料设计,多目标差分演化算法,材料模拟软件,材料结构预测,计算材料学,第一性原理,材料优化">
+    <meta name="author" content="Yueyu Zhang">
+    <meta property="og:title" content="IM2ODE 逆向材料设计软件包">
+    <meta property="og:description" content="基于多目标差分演化算法的逆向材料设计平台，支持多维度、多目标材料结构预测">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yueyuzhang.github.io/im2ode.github.io/">
+    <meta property="og:site_name" content="IM2ODE 官方网站">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"dark",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-0914e078><!--[--><!--]--><!--[--><span tabindex="-1" data-v-6e6e1aab></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-6e6e1aab>Skip to content</a><!--]--><!----><header class="VPNav" data-v-0914e078 data-v-484c7d21><div class="VPNavBar" data-v-484c7d21 data-v-0ca4378b><div class="wrapper" data-v-0ca4378b><div class="container" data-v-0ca4378b><div class="title" data-v-0ca4378b><div class="VPNavBarTitle has-sidebar" data-v-0ca4378b data-v-440d5ebf><a class="title" href="/im2ode.github.io/" data-v-440d5ebf><!--[--><!--]--><!----><span data-v-440d5ebf>IM2ODE</span><!--[--><!--]--></a></div></div><div class="content" data-v-0ca4378b><div class="content-body" data-v-0ca4378b><!--[--><!--]--><div class="VPNavBarSearch search" data-v-0ca4378b><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-0ca4378b data-v-16236d9b><span id="main-nav-aria-label" class="visually-hidden" data-v-16236d9b> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>首页</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/features.html" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>功能介绍</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/cases.html" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>应用案例</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/guide/" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>文档</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/download.html" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>下载</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/im2ode.github.io/about.html" tabindex="0" data-v-16236d9b data-v-926476ab><!--[--><span data-v-926476ab>关于我们</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-0ca4378b data-v-274cee91><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="true" data-v-274cee91 data-v-32043f6f data-v-b55f610c><span class="check" data-v-b55f610c><span class="icon" data-v-b55f610c><!--[--><span class="vpi-sun sun" data-v-32043f6f></span><span class="vpi-moon moon" data-v-32043f6f></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-0ca4378b data-v-2687640d data-v-a8978b54><!--[--><a class="VPSocialLink no-icon" href="https://github.com/YueyuZhang/IM2ODE" aria-label="github" target="_blank" rel="noopener" data-v-a8978b54 data-v-94ad79c9><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-0ca4378b data-v-d76c257f data-v-1e774206><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-1e774206><span class="vpi-more-horizontal icon" data-v-1e774206></span></button><div class="menu" data-v-1e774206><div class="VPMenu" data-v-1e774206 data-v-1994aec3><!----><!--[--><!--[--><!----><div class="group" data-v-d76c257f><div class="item appearance" data-v-d76c257f><p class="label" data-v-d76c257f>Appearance</p><div class="appearance-action" data-v-d76c257f><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="true" data-v-d76c257f data-v-32043f6f data-v-b55f610c><span class="check" data-v-b55f610c><span class="icon" data-v-b55f610c><!--[--><span class="vpi-sun sun" data-v-32043f6f></span><span class="vpi-moon moon" data-v-32043f6f></span><!--]--></span></span></button></div></div></div><div class="group" data-v-d76c257f><div class="item social-links" data-v-d76c257f><div class="VPSocialLinks social-links-list" data-v-d76c257f data-v-a8978b54><!--[--><a class="VPSocialLink no-icon" href="https://github.com/YueyuZhang/IM2ODE" aria-label="github" target="_blank" rel="noopener" data-v-a8978b54 data-v-94ad79c9><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-0ca4378b data-v-a4ff98b9><span class="container" data-v-a4ff98b9><span class="top" data-v-a4ff98b9></span><span class="middle" data-v-a4ff98b9></span><span class="bottom" data-v-a4ff98b9></span></span></button></div></div></div></div><div class="divider" data-v-0ca4378b><div class="divider-line" data-v-0ca4378b></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-0914e078 data-v-f165ece5><div class="container" data-v-f165ece5><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-f165ece5><span class="vpi-align-left menu-icon" data-v-f165ece5></span><span class="menu-text" data-v-f165ece5>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-f165ece5 data-v-41422524><button data-v-41422524>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-0914e078 data-v-5371673b><div class="curtain" data-v-5371673b></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-5371673b><span class="visually-hidden" id="sidebar-aria-label" data-v-5371673b> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-b798d2cd><section class="VPSidebarItem level-0" data-v-b798d2cd data-v-12818228><!----><div class="items" data-v-12818228><!--[--><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/" data-v-12818228><!--[--><p class="text" data-v-12818228>首页</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/features.html" data-v-12818228><!--[--><p class="text" data-v-12818228>功能介绍</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/cases.html" data-v-12818228><!--[--><p class="text" data-v-12818228>应用案例</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/download.html" data-v-12818228><!--[--><p class="text" data-v-12818228>下载</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/about.html" data-v-12818228><!--[--><p class="text" data-v-12818228>关于我们</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-b798d2cd><section class="VPSidebarItem level-0 has-active" data-v-b798d2cd data-v-12818228><div class="item" role="button" tabindex="0" data-v-12818228><div class="indicator" data-v-12818228></div><h2 class="text" data-v-12818228>文档</h2><!----></div><div class="items" data-v-12818228><!--[--><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/guide/getting-started.html" data-v-12818228><!--[--><p class="text" data-v-12818228>快速开始</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/guide/installation.html" data-v-12818228><!--[--><p class="text" data-v-12818228>安装说明</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-12818228 data-v-12818228><div class="item" data-v-12818228><div class="indicator" data-v-12818228></div><a class="VPLink link link" href="/im2ode.github.io/guide/configuration.html" data-v-12818228><!--[--><p class="text" data-v-12818228>参数配置</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-0914e078 data-v-fe5ec3aa><div class="VPDoc has-sidebar has-aside" data-v-fe5ec3aa data-v-cce3abac><!--[--><!--]--><div class="container" data-v-cce3abac><div class="aside" data-v-cce3abac><div class="aside-curtain" data-v-cce3abac></div><div class="aside-container" data-v-cce3abac><div class="aside-content" data-v-cce3abac><div class="VPDocAside" data-v-cce3abac data-v-9d4bffc8><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-9d4bffc8 data-v-c3535a69><div class="content" data-v-c3535a69><div class="outline-marker" data-v-c3535a69></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-c3535a69>On this page</div><ul class="VPDocOutlineItem root" data-v-c3535a69 data-v-b5d93ffb><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-9d4bffc8></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-cce3abac><div class="content-container" data-v-cce3abac><!--[--><!--]--><main class="main" data-v-cce3abac><div style="position:relative;" class="vp-doc _im2ode_github_io_guide_configuration" data-v-cce3abac><div><h1 id="参数配置指南" tabindex="-1">参数配置指南 <a class="header-anchor" href="#参数配置指南" aria-label="Permalink to &quot;参数配置指南&quot;">​</a></h1><blockquote><p>未加说明的长度单位都是Angstrom，能量单位是eV</p></blockquote><h2 id="基础参数说明" tabindex="-1">基础参数说明 <a class="header-anchor" href="#基础参数说明" aria-label="Permalink to &quot;基础参数说明&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>SystemName # 体系名称，后面加一个字符串，长度不超过20</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NumberOfSpecies # 体系元素种类，输入整数,范围[1,10]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NumberOfElements # 每种元素对应的原子个数，输入NumberOfSpecies个，整数，范围[1,100]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NameOfElements # 每种元素对应的元素名称，输入NumberOfSpecies个，字符串，长度不超过2</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Volumn # 初始原胞体积(大概估一下)，浮点数，以后每代会自动更新</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DistanceOfAtom # 下面跟着NumberOfSpecies行，每行有NumberOfSpecies个数(浮点型)，输入</span></span>
+<span class="line"><span>## 元素间的最小距离，每种元素与其他元素间的距离用一个向量DIS1, DIS2表示</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>## Matrix Element1 Element2</span></span>
+<span class="line"><span>DIS1 = 1.6 1.8 ## Element1 ## 交叉点为第i个和第j个元素之间的最小距离</span></span>
+<span class="line"><span>DIS2 = 1.8 1.2 ## Element2</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Population # 种群数，即每代产生的结构数，整数，范围[4, 500]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MaxStep # 最大代数，即程序总共跑几代，整数</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>De_ratio # 每代有多少比例的结构直接由DE产生，其余随机产生，浮点数，范围(0,1)</span></span>
+<span class="line"><span>## 要满足De_ratio*Population&gt;4，否则无法进行DE的操作(DE算法本身限制)</span></span>
+<span class="line"><span>## 如果想要每代都random，不用DE，可以使De_ratio*Population=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SelectiveDynamics # 只动一部分的原子(仅在有输入文件struct.in的情况下有效，bool, default = F</span></span>
+<span class="line"><span>## 在T时，struct.in文件的写法有所变化，在原子坐标后面加上T/F, T表示由vasp进行位置优化，F表示固定(见程序包里的struct.in_selective_dynamics)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Symmetry # 是否加上空间群优化，bool, default = T(仅在产生块体结构时有效)</span></span>
+<span class="line"><span>spg_front # 起始空间群号，default=1</span></span>
+<span class="line"><span>spg_rear # 终止空间群号，default=230，这两个数限定产生结构选取的空间群范围</span></span>
+<span class="line"><span>## 1-2   三斜</span></span>
+<span class="line"><span>## 3-15  单斜</span></span>
+<span class="line"><span>## 16-74 正交</span></span>
+<span class="line"><span>## 75-142 四方</span></span>
+<span class="line"><span>## 143-167 三角</span></span>
+<span class="line"><span>## 168-194 六角</span></span>
+<span class="line"><span>## 195-230 立方</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Pickup # 是否从某一代继续计算, bool</span></span>
+<span class="line"><span>## 注：在results文件夹里一定要有de_opt_*. 比如从第5代开始跑，把Pickup_step设成5, 准备好results/de_opt_5文件</span></span>
+<span class="line"><span>Pickup_step # 继续计算的代数，整数</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mystruct # 输入自己认为比较好的结构的个数，整数</span></span>
+<span class="line"><span>## 结构文件放在mystruct1, mystruct2, 其中原子种类顺序、要和de.in的一致</span></span>
+<span class="line"><span>## 如果遇到有衬底的情况，先写衬底原子，再写全局优化的原子</span></span></code></pre></div><h2 id="多目标优化参数" tabindex="-1">多目标优化参数 <a class="header-anchor" href="#多目标优化参数" aria-label="Permalink to &quot;多目标优化参数&quot;">​</a></h2><p>在晶体结构搜索的基础上加下面标签，目前支持<code>free energy &amp; hardness</code> 同时优化和 <code>free energy &amp; bandgap</code> 同时优化：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>Multi-Objective # 多目标，bool</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Hardness # (计算方法用的PRB32,7988 &amp;&amp; Mat. Sci. &amp; Eng. A209 1996 1-4)是否最大化bulk modulus, bool，需同时加rcut和ionicity</span></span>
+<span class="line"><span>Rcut # max bond length，取一个第一近邻和第二近邻间的数)，浮点数</span></span>
+<span class="line"><span>Iconicity # 根据元素不同来取，详细参考Cohen的文章(PRB41,10727)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ESflag # 是否考虑bandgap，bool，需要写Matrix_elements,来判断哪里有跃迁</span></span>
+<span class="line"><span>Es_mod # bandgap的优化方式，整数，范围[1,6]</span></span>
+<span class="line"><span>## 1: maximal bandgap</span></span>
+<span class="line"><span>## 2: minimal bandgap</span></span>
+<span class="line"><span>## 3: a target bandgap</span></span>
+<span class="line"><span>## 4: only direct gap, largest</span></span>
+<span class="line"><span>## 5: only direct gap, largest (recommended)</span></span>
+<span class="line"><span>## 6: a target direct gap</span></span>
+<span class="line"><span>ES_Eg # 目标gap，浮点数，当Es_mod=3/6时需要设置</span></span>
+<span class="line"><span>ES_opt # 在es_mod=3/6时，用于处理直接带隙是否有跃迁的情况，当且仅当vasp写 Matrix_elements 的时候有效，需要直接带隙跃迁把ES_opt的值设的和ES_Eg一样，其余的在ES_opt以下有跃迁的都可以</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>HSE # 在band gap运算中加入HSE，bool，需增加 run_pvasp_HSE.sh 投递HSE的任务</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## 第一步跑静态的LDA，算能量值。要在LDA跑完后把这步跑的 OUTCACR 拷成 OUTCAR.old 读取能量。</span></span>
+<span class="line"><span>## Population设成LDA_population，另外增加以下参数：</span></span>
+<span class="line"><span>HSE_population # 每一代优化完后用来做HSE计算的结构数</span></span>
+<span class="line"><span>LDA_population # 用LDA来做全局优化的结构数，与population含义相同</span></span>
+<span class="line"><span>energy_cut # 能量截断，在每次LDA计算后只有能量低于energy_cut的结构进行HSE计算</span></span>
+<span class="line"><span>gap_cut # 第二个目标函数的截断</span></span>
+<span class="line"><span>LDA_ES_Eg # 同上面ES_Eg的定义，针对LDA计算所得gap值</span></span>
+<span class="line"><span>LDA_Es_opt # 同上面ES_opt的定义，针对LDA计算所得gap值</span></span>
+<span class="line"><span>HSE_ES_Eg # 同上面ES_Eg的定义，针对HSE计算所得gap值</span></span>
+<span class="line"><span>HSE_Es_opt # 同上面ES_opt的定义，针对HSE计算所得gap值</span></span></code></pre></div><h2 id="准二维材料参数" tabindex="-1">准二维材料参数 <a class="header-anchor" href="#准二维材料参数" aria-label="Permalink to &quot;准二维材料参数&quot;">​</a></h2><p>在晶体结构搜索的基础上加上以下标签：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>Q2D # 准二维, bool</span></span>
+<span class="line"><span>vacuum_layer # 真空层，浮点数，需要先测试(通常在10左右，这里产生的结构真空层沿c方向)</span></span>
+<span class="line"><span>Area # 准二维材料原胞在二维平面内投影的面积，浮点数</span></span>
+<span class="line"><span>Layer_hight # 准二维材料的原子层厚度，浮点数</span></span></code></pre></div><h2 id="团簇-衬底-缺陷-表面-晶界参数" tabindex="-1">团簇/衬底/缺陷/表面/晶界参数 <a class="header-anchor" href="#团簇-衬底-缺陷-表面-晶界参数" aria-label="Permalink to &quot;团簇/衬底/缺陷/表面/晶界参数&quot;">​</a></h2><p>包括简单的cluster搜索和cluster+substrate的搜索，<strong>一定要打开fix_lat标签</strong>：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>cluster # 搜索cluster标签，bool</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## cluster下面有3种模式，分别是ball, shell,和plate。这3种模式用于产生不同构型的cluster。定义如下：</span></span>
+<span class="line"><span>model_ball # 产生球形cluster的比例，(0,1)</span></span>
+<span class="line"><span>model_shell # 产生笼状cluster的比例，(0,1)</span></span>
+<span class="line"><span>model_plate # 产生盘状cluster的比例，(0,1)，上述三个加起来总和为1，如：</span></span>
+<span class="line"><span>## model_ball=0.8</span></span>
+<span class="line"><span>## model_shell=0.1</span></span>
+<span class="line"><span>## model_plate=0.1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## model_boll有参数如下：</span></span>
+<span class="line"><span>init_radius # 初始的cluster半径，浮点数(这里给个大概就行)</span></span>
+<span class="line"><span>cluster_ctr_x # cluster的中心坐标(direct)</span></span>
+<span class="line"><span>cluster_ctr_y</span></span>
+<span class="line"><span>cluster_ctr_z</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## model_shell有参数如下：</span></span>
+<span class="line"><span>shell_radius_out # 笼状cluster外半径</span></span>
+<span class="line"><span>shell_radius_in # 笼状cluster内半径</span></span>
+<span class="line"><span>shell_ctr_x # 笼状cluster的中心坐标(direct)</span></span>
+<span class="line"><span>shell_ctr_y</span></span>
+<span class="line"><span>shell_ctr_z</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## model_plate有参数如下：</span></span>
+<span class="line"><span>plate_radius # 盘状cluster半径</span></span>
+<span class="line"><span>plate_height # 盘状cluster厚度</span></span>
+<span class="line"><span>plate_ctr_x # 盘状cluster的中心坐标(direct)</span></span>
+<span class="line"><span>plate_ctr_y</span></span>
+<span class="line"><span>plate_ctr_z</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>cluster_substrate # 是否加衬底标签，bool，需增加一个输入文件struct.in，里面是衬底的原子坐标</span></span>
+<span class="line"><span>## 元素顺序和SubstrateElements对应，体系中NumberOfElements是衬底原子总数+cluster原子总数</span></span>
+<span class="line"><span>SubstrateElements # 衬底中每种元素对应的原子数，形式和顺序上都和NumberOfElements的写法一致</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fix_lat # 标签，bool</span></span>
+<span class="line"><span>fix_a</span></span>
+<span class="line"><span>fix_b</span></span>
+<span class="line"><span>fix_c</span></span>
+<span class="line"><span>fix_alpha</span></span>
+<span class="line"><span>fix_beta</span></span>
+<span class="line"><span>fix_gama # 以上都是浮点数，alpha, beta, gama用(0,180)间的数表示</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>注：在Q2D情况下打开fix_lat标签，fix_c表示原子层厚度而不是晶格常数</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>find_defect # 标签，bool</span></span>
+<span class="line"><span>## 在晶体中产生defect的形式与cluster+substrate一样，之后的参数详细设置见cluster，用到的参数有：</span></span>
+<span class="line"><span>cluster=T # (fixed)</span></span>
+<span class="line"><span>model_ball=1.0 # (fixed)</span></span>
+<span class="line"><span>init_radius # (自行设置，defect原子限定半径)</span></span>
+<span class="line"><span>cluster_ctr_x # (自行设置，defect中心坐标)</span></span>
+<span class="line"><span>cluster_ctr_y # (同上)</span></span>
+<span class="line"><span>cluster_ctr_z # (同上)</span></span>
+<span class="line"><span>cluster_substrate=T</span></span>
+<span class="line"><span>SubstrateElements # (defect中固定的原子个数，由struct.in文件读入)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>因为該模块是在cluster_substrate上改的，所以要加上部分cluster_substrate的 tag：</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>注：下面原子层的原子坐标在struct.in文件里写</span></span>
+<span class="line"><span>强烈建议用SelectiveDynamics，struct.in里面原子层远离全局优化层设F，靠近的两层用T</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>model_surface # 标签，bool</span></span>
+<span class="line"><span>surface_height # 表面全局优化洒原子层的厚度(不是整个slab的厚度)，浮点数，单位：Astron</span></span>
+<span class="line"><span>cluster=T</span></span>
+<span class="line"><span>cluster_substrate=T</span></span>
+<span class="line"><span>SubstrateElements # (下层的原子个数，由struct.in文件读入)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>注：用真空层模型,上下原子层坐标写在struct.in文件里</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>model_gb # 标签，bool</span></span>
+<span class="line"><span>bottom_height # 底层衬底的厚度(从零点开始计算)</span></span>
+<span class="line"><span>gb_height # 全局优化的洒原子层的厚度(程序会自动优化)</span></span>
+<span class="line"><span>top_height # 顶层原子层厚度(从0,0,1点开始计算)</span></span>
+<span class="line"><span>transverse_a # 顶层原子平移x方向单位晶格的自由度，范围[0,1]</span></span>
+<span class="line"><span>transverse_b # 顶层原子平移y方向单位晶格的自由度，范围[0,1]</span></span></code></pre></div><h2 id="配置示例" tabindex="-1">配置示例 <a class="header-anchor" href="#配置示例" aria-label="Permalink to &quot;配置示例&quot;">​</a></h2><h3 id="tio2多目标带隙优化" tabindex="-1">TiO₂多目标带隙优化 <a class="header-anchor" href="#tio2多目标带隙优化" aria-label="Permalink to &quot;TiO₂多目标带隙优化&quot;">​</a></h3><blockquote><p>目标带隙0.8eV，半导体材料设计</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># input file for de</span></span>
+<span class="line"><span># search for TiO2, muti-objective, objective bandgap = 0.8</span></span>
+<span class="line"><span>SystemName=TiO</span></span>
+<span class="line"><span>NumberOfSpecies=2</span></span>
+<span class="line"><span>NumberOfElements=4 8</span></span>
+<span class="line"><span>NameOfElements=Ti O</span></span>
+<span class="line"><span>Volumn=132</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>DIS1=1.6 1.2</span></span>
+<span class="line"><span>DIS2=1.2 1.0</span></span>
+<span class="line"><span>Population=30</span></span>
+<span class="line"><span>MaxStep=20</span></span>
+<span class="line"><span>De_ratio=0.6</span></span>
+<span class="line"><span>Symmetry=T</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Multi-Objective=T</span></span>
+<span class="line"><span>hardness=F</span></span>
+<span class="line"><span># rcut=2.5</span></span>
+<span class="line"><span># ionicity=0.0</span></span>
+<span class="line"><span>ESflag=T</span></span>
+<span class="line"><span>ES_mod=6</span></span>
+<span class="line"><span>ES_Eg=0.8</span></span>
+<span class="line"><span>ES_opt=1.5</span></span></code></pre></div><h3 id="fese准二维材料搜索" tabindex="-1">FeSe准二维材料搜索 <a class="header-anchor" href="#fese准二维材料搜索" aria-label="Permalink to &quot;FeSe准二维材料搜索&quot;">​</a></h3><blockquote><p>二维铁基超导体材料设计</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># input file for de</span></span>
+<span class="line"><span>SystemName=Fe Se</span></span>
+<span class="line"><span>NumberOfSpecies=2</span></span>
+<span class="line"><span>NumberOfElements=4 4</span></span>
+<span class="line"><span>NameOfElements=Fe Se</span></span>
+<span class="line"><span>Volumn=160</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>DIS1=2.2 1.5</span></span>
+<span class="line"><span>DIS2=1.5 2.2</span></span>
+<span class="line"><span>Population=8</span></span>
+<span class="line"><span>MaxStep=1</span></span>
+<span class="line"><span>De_ratio=0.6</span></span>
+<span class="line"><span>Symmetry=T</span></span>
+<span class="line"><span># spg_front=168</span></span>
+<span class="line"><span># spg_rear=194</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Q2D=T</span></span>
+<span class="line"><span>vacuum_layer=10</span></span>
+<span class="line"><span>Area=70.15</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fix_lat=T</span></span>
+<span class="line"><span>fix_a=7.8</span></span>
+<span class="line"><span>fix_b=7.8</span></span>
+<span class="line"><span>fix_c=0.8</span></span>
+<span class="line"><span>fix_alpha=120</span></span>
+<span class="line"><span>fix_beta=90</span></span>
+<span class="line"><span>fix_gama=90</span></span></code></pre></div><h3 id="pdau团簇搜索" tabindex="-1">PdAu团簇搜索 <a class="header-anchor" href="#pdau团簇搜索" aria-label="Permalink to &quot;PdAu团簇搜索&quot;">​</a></h3><blockquote><p>零维团簇结构设计</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>SystemName=PdAu</span></span>
+<span class="line"><span>NumberOfSpecies=2</span></span>
+<span class="line"><span>NumberOfElements=4 1</span></span>
+<span class="line"><span>NameOfElements=Pd Au</span></span>
+<span class="line"><span>Volumn=3375</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>DIS1=1.5 1.5</span></span>
+<span class="line"><span>DIS2=1.5 1.5</span></span>
+<span class="line"><span>Population=15</span></span>
+<span class="line"><span>MaxStep=10</span></span>
+<span class="line"><span>De_ratio=0.6</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>cluster=T</span></span>
+<span class="line"><span>init_radius=3</span></span>
+<span class="line"><span>cluster_ctr_x=0.5</span></span>
+<span class="line"><span>cluster_ctr_y=0.5</span></span>
+<span class="line"><span>cluster_ctr_z=0.5</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fix_lat=T</span></span>
+<span class="line"><span>fix_a=15.0</span></span>
+<span class="line"><span>fix_b=15.0</span></span>
+<span class="line"><span>fix_c=15.0</span></span>
+<span class="line"><span>fix_alpha=90</span></span>
+<span class="line"><span>fix_beta=90</span></span>
+<span class="line"><span>fix_gama=90</span></span></code></pre></div><h3 id="tio2表面结构搜索" tabindex="-1">TiO₂表面结构搜索 <a class="header-anchor" href="#tio2表面结构搜索" aria-label="Permalink to &quot;TiO₂表面结构搜索&quot;">​</a></h3><blockquote><p>表面/界面结构设计</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>SystemName=TiO</span></span>
+<span class="line"><span>NumberOfSpecies=2</span></span>
+<span class="line"><span>NumberOfElements=16 32</span></span>
+<span class="line"><span>NameOfElements=Ti O</span></span>
+<span class="line"><span>Volumn=954.87</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>DIS1=2.2 1.8</span></span>
+<span class="line"><span>DIS2=1.8 1.2</span></span>
+<span class="line"><span>Population=30</span></span>
+<span class="line"><span>MaxStep=20</span></span>
+<span class="line"><span>De_ratio=0.6</span></span>
+<span class="line"><span>SelectiveDynamics=T</span></span>
+<span class="line"><span>Pickup=F</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>cluster=T</span></span>
+<span class="line"><span>cluster_substrate=T</span></span>
+<span class="line"><span>SubstrateElements=12 24</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>model_surface=T</span></span>
+<span class="line"><span>surface_height=3</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fix_lat=T</span></span>
+<span class="line"><span>fix_a=10.2913</span></span>
+<span class="line"><span>fix_b=3.8015</span></span>
+<span class="line"><span>fix_c=24.4223</span></span>
+<span class="line"><span>fix_alpha=90</span></span>
+<span class="line"><span>fix_beta=90</span></span>
+<span class="line"><span>fix_gama=90</span></span></code></pre></div><h3 id="晶界结构搜索" tabindex="-1">晶界结构搜索 <a class="header-anchor" href="#晶界结构搜索" aria-label="Permalink to &quot;晶界结构搜索&quot;">​</a></h3><blockquote><p>晶界/缺陷结构设计</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>SystemName=STOSi</span></span>
+<span class="line"><span>NumberOfSpecies=5</span></span>
+<span class="line"><span>NumberOfElements=28 8 10 28 8</span></span>
+<span class="line"><span>NameOfElements=Si Sr Ti O H</span></span>
+<span class="line"><span>Volumn=1983.885</span></span>
+<span class="line"><span>DistanceOfAtom=</span></span>
+<span class="line"><span>DIS1=1.0 1.5 1.5 1.0 1.0</span></span>
+<span class="line"><span>DIS2=1.5 2.0 2.0 1.5 1.0</span></span>
+<span class="line"><span>DIS3=1.0 2.0 2.0 1.5 1.0</span></span>
+<span class="line"><span>DIS4=1.0 1.5 1.5 1.5 1.0</span></span>
+<span class="line"><span>DIS5=1.0 1.0 1.0 1.0 1.0</span></span>
+<span class="line"><span>Population=30</span></span>
+<span class="line"><span>MaxStep=30</span></span>
+<span class="line"><span>De_ratio=0.6</span></span>
+<span class="line"><span>SelectiveDynamics=T</span></span>
+<span class="line"><span>cluster_substrate=T</span></span>
+<span class="line"><span>SubstrateElements=28 8 8 24 8</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># for grain boundary generation</span></span>
+<span class="line"><span>model_gb=T</span></span>
+<span class="line"><span># the following three are cartisian coordinations</span></span>
+<span class="line"><span>bottom_height=14.964</span></span>
+<span class="line"><span>gb_height=4.084</span></span>
+<span class="line"><span>top_height=14.102</span></span>
+<span class="line"><span># transverse freedom for the top layer (direct)</span></span>
+<span class="line"><span>transverse_a=1.0</span></span>
+<span class="line"><span>transverse_b=1.0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fix_lat=T</span></span>
+<span class="line"><span>fix_a=7.736</span></span>
+<span class="line"><span>fix_b=7.736</span></span>
+<span class="line"><span>fix_c=35.15</span></span>
+<span class="line"><span>fix_alpha=90</span></span>
+<span class="line"><span>fix_beta=90</span></span>
+<span class="line"><span>fix_gama=90</span></span></code></pre></div><h2 id="程序运行说明" tabindex="-1">程序运行说明 <a class="header-anchor" href="#程序运行说明" aria-label="Permalink to &quot;程序运行说明&quot;">​</a></h2><p>现在发布的程序包都是<code>DE-package_日期.tar.gz</code>，最新的稳定版本是<code>DE-package-20140627.tar.gz</code> 使用<code>tar -xzvf DE-package_日期.tar.gz</code>解压，装有gfortran的机器都能编译，<code>make</code>一下就行了</p><p>用<code>de.pbs</code>把<code>de.x</code>投到机器上去跑，然后<code>de.x</code>会调用<code>run_pvasp.sh</code>，这个脚本是把所有的<code>POSCAR*</code>用<code>vasp.pbs</code>投机器上并检测有没有跑完。 一般对于不同的机器改一下这几个脚本就行了。</p><p>运行后每一步的结果都在<code>results</code>文件夹里：</p><ul><li><code>de_ini_*</code> 是每一代初始化的结构</li><li><code>de_opt_*</code> 是优化好的结构，每个结构文件前面是能量(eV/atom)，如果用muti-objective，前面多加一个fitness的值</li></ul><p>主程序跑完后把<code>tools</code>文件夹下的<code>outPOSCAR.cpp</code>和<code>input.dat</code>拷到<code>results</code>文件夹下：</p><ul><li><code>input.dat</code>里第一行的那个数是个标签，跑一般的de用<code>1</code>, mode用<code>2</code></li><li>在标签=1的情况下，第二行设一个实数，表示energy/atom低于那个数的结构全部取出来</li><li>在标签=2的情况下，第二行设两个实数，第一个同上，第二个是mode的另一个目标函数的最大值</li><li>第三行的两个数<code>a,b</code>表示处理第a-b代运行的结果，一般设a=1, b和de.in里面的一致</li></ul><p>运行后<code>out.dat</code>里是所有结构能量(multi-objective情况是按frontier)的排序，输出<code>POSCAR*</code>是符合input.dat中设定条件的结构</p><blockquote><p>🔗 更多使用案例见 <a href="/im2ode.github.io/cases.html">应用案例库</a></p></blockquote></div></div></main><footer class="VPDocFooter" data-v-cce3abac data-v-fc882154><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-fc882154><span class="visually-hidden" id="doc-footer-aria-label" data-v-fc882154>Pager</span><div class="pager" data-v-fc882154><a class="VPLink link pager-link prev" href="/im2ode.github.io/guide/installation.html" data-v-fc882154><!--[--><span class="desc" data-v-fc882154>Previous page</span><span class="title" data-v-fc882154>安装说明</span><!--]--></a></div><div class="pager" data-v-fc882154><!----></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about.md\":\"xAhOYhnh\",\"cases.md\":\"CqpvHyXt\",\"download.md\":\"CxfD3H-k\",\"features.md\":\"D9DfakJo\",\"guide_configuration.md\":\"BqvvTMT9\",\"guide_getting-started.md\":\"ctssEtp4\",\"guide_index.md\":\"BxKayQbO\",\"guide_installation.md\":\"CPtjbrfr\",\"index.md\":\"DZzihKkB\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"IM2ODE\",\"titleTemplate\":\"%s - IM2ODE 逆向材料设计软件包\",\"description\":\"IM2ODE是基于多目标差分演化算法的逆向材料设计软件包，支持3D晶体、2D层状、1D纳米带、0D团簇结构预测，可用于半导体带隙、超硬材料等功能材料的逆向设计\",\"base\":\"/im2ode.github.io/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":\"dark\",\"themeConfig\":{\"nav\":[{\"text\":\"首页\",\"link\":\"/\"},{\"text\":\"功能介绍\",\"link\":\"/features\"},{\"text\":\"应用案例\",\"link\":\"/cases\"},{\"text\":\"文档\",\"link\":\"/guide/\"},{\"text\":\"下载\",\"link\":\"/download\"},{\"text\":\"关于我们\",\"link\":\"/about\"}],\"sidebar\":[{\"text\":\"首页\",\"link\":\"/\"},{\"text\":\"功能介绍\",\"link\":\"/features\"},{\"text\":\"应用案例\",\"link\":\"/cases\"},{\"text\":\"下载\",\"link\":\"/download\"},{\"text\":\"关于我们\",\"link\":\"/about\"},{\"text\":\"文档\",\"items\":[{\"text\":\"快速开始\",\"link\":\"/guide/getting-started\"},{\"text\":\"安装说明\",\"link\":\"/guide/installation\"},{\"text\":\"参数配置\",\"link\":\"/guide/configuration\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/YueyuZhang/IM2ODE\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>
