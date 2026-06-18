@@ -35,35 +35,49 @@
   
     
   
-    <!-- IM2ODE4mattersim Tip - Injected after hero section -->
+    
+
+  
+    <!-- IM2ODE4mattersim Tip - Single insertion -->
     <script>
     (function() {
+      var injected = false;
+      
       function injectTip() {
-        // Try to find the VPContent or the hero actions area
+        if (injected) return;
+        
+        // Check if already exists
+        if (document.getElementById('mattersim-tip')) {
+          injected = true;
+          return;
+        }
+        
+        // Try to find the hero actions area
         var contentArea = document.querySelector('.VPHero .actions') || 
-                          document.querySelector('.VPContent') ||
-                          document.querySelector('#app');
+                          document.querySelector('.VPContent');
         
         if (contentArea) {
           var tipBox = document.createElement('div');
+          tipBox.id = 'mattersim-tip';
           tipBox.style.cssText = 'max-width: 1152px; margin: 24px auto 40px; padding: 16px 24px; background: var(--vp-custom-block-tip-bg, rgba(18, 180, 142, 0.1)); border-left: 4px solid var(--vp-custom-block-tip-border, #12b48e); border-radius: 2px; font-family: system-ui, -apple-system, sans-serif;';
           
           tipBox.innerHTML = '<div style="font-weight: 600; margin-bottom: 8px; color: var(--vp-custom-block-tip-text, #12b48e); font-size: 15px;">[NEW] IM2ODE4mattersim - 机器学习力场版本</div><div style="font-size: 14px; line-height: 1.6;">新增 MatterSim 机器学习力场支持！包含 5 个完整示例：体相 TiO2、Au20 团簇、FeSe 单层、CuZn 表面吸附、Ag4 团簇表面相互作用。 <a href="https://github.com/YueyuZhang/IM2ODE4mattersim" target="_blank" style="color: var(--vp-c-brand, #3eaf7c); font-weight: 600; text-decoration: underline; text-underline-offset: 2px;">访问 GitHub 下载 &rarr;</a></div>';
           
-          // Insert after the hero actions or at the beginning of content
+          // Insert after the hero actions
           if (contentArea.classList.contains('actions')) {
             contentArea.parentNode.insertBefore(tipBox, contentArea.nextSibling);
           } else {
             contentArea.insertBefore(tipBox, contentArea.firstChild);
           }
+          
+          injected = true;
         }
       }
       
-      // Try multiple times to ensure injection works after VitePress renders
-      setTimeout(injectTip, 100);
+      // Try with increasing delays
+      setTimeout(injectTip, 50);
+      setTimeout(injectTip, 150);
       setTimeout(injectTip, 300);
-      setTimeout(injectTip, 500);
-      setTimeout(injectTip, 1000);
     })();
     </script>
 
